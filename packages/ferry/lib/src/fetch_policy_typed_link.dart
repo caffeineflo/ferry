@@ -61,26 +61,35 @@ class FetchPolicyTypedLink extends TypedLink {
     final fetchPolicy =
         operationRequest.fetchPolicy ?? defaultFetchPolicies[operationType];
 
+    operationRequest.state = RequestState.Loading;
+
     switch (fetchPolicy) {
       case FetchPolicy.NoCache:
         return _optimisticLinkTypedLink
             .request(operationRequest)
+            ._handleRequestState(operationRequest)
             .doOnData(_removeOptimisticPatch)
             .doOnCancel(() => cache.removeOptimisticPatch(operationRequest));
       case FetchPolicy.NetworkOnly:
         return _optimisticLinkTypedLink
             .request(operationRequest)
+            ._handleRequestState(operationRequest)
             .doOnData(_removeOptimisticPatch)
             .doOnData(_writeToCache)
             .doOnCancel(() => cache.removeOptimisticPatch(operationRequest));
       case FetchPolicy.CacheOnly:
-        return _cacheTypedLink.request(operationRequest);
+        return _cacheTypedLink
+            .request(operationRequest)
+            ._handleRequestState(operationRequest);
       case FetchPolicy.CacheFirst:
         return _cacheTypedLink.request(operationRequest).take(1).switchMap(
               (result) => result.data != null
-                  ? _cacheTypedLink.request(operationRequest)
+                  ? _cacheTypedLink
+                      .request(operationRequest)
+                      ._handleRequestState(operationRequest)
                   : _optimisticLinkTypedLink
                       .request(operationRequest)
+                      ._handleRequestState(operationRequest)
                       .doOnData(_removeOptimisticPatch)
                       .doOnData(_writeToCache)
                       .doOnCancel(
@@ -106,7 +115,7 @@ class FetchPolicyTypedLink extends TypedLink {
               .doOnData(_writeToCache)
               .doOnCancel(() => cache.removeOptimisticPatch(operationRequest))
               .concatWith([_cacheTypedLink.request(operationRequest).skip(1)])
-        ]);
+        ])._handleRequestState(operationRequest);
       default:
         throw Exception('Unrecognized FetchPolicy');
     }
@@ -141,5 +150,24 @@ class FetchPolicyTypedLink extends TypedLink {
   @override
   Future<void> dispose() async {
     await _defaultCache?.dispose();
+  }
+}
+
+extension ResponseStreamHandler<TData, TVars>
+    on Stream<OperationResponse<TData, TVars>> {
+  Stream<OperationResponse<TData, TVars>> _handleRequestState(
+    OperationRequest<TData, TVars> operationRequest,
+  ) {
+    return doOnError(
+            (error, stackTrace) => operationRequest.state = RequestState.Failed)
+        .doOnData(
+      (response) {
+        if (response.hasErrors) {
+          operationRequest.state = RequestState.Failed;
+        } else {
+          operationRequest.state = RequestState.Succeeded;
+        }
+      },
+    ).doOnCancel(() => operationRequest.state = RequestState.Idle);
   }
 }

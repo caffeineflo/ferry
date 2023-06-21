@@ -93,6 +93,7 @@ abstract class TypedLink {
   Stream<OperationResponse<TData, TVars>> request<TData, TVars>(
     /// An incoming [OperationRequest]
     OperationRequest<TData, TVars> request, [
+
     /// Function that invokes the [request] function of
     /// the next [TypedLink]
     ///
