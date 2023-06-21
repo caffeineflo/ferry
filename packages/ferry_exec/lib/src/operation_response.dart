@@ -41,8 +41,8 @@ class OperationResponse<TData, TVars> {
   /// Any error returned by [Link]
   final LinkException? linkException;
 
-  // TODO: is there a better way to implement loading?
-  bool get loading => linkException == null && data == null;
+  /// If this response is loading.
+  bool get loading => operationRequest.state == RequestState.Loading;
 
   /// If this response has any error.
   bool get hasErrors =>
