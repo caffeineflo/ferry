@@ -30,7 +30,8 @@ abstract class GLoginReq
       document: _i5.document,
       operationName: 'Login',
     )
-    ..executeOnListen = true;
+    ..executeOnListen = true
+    ..state = _i1.RequestState.Idle;
   @override
   _i3.GLoginVars get vars;
   @override
@@ -58,6 +59,8 @@ abstract class GLoginReq
   _i1.FetchPolicy? get fetchPolicy;
   @override
   bool get executeOnListen;
+  @override
+  _i1.RequestState get state;
   @override
   _i2.GLoginData? parseData(Map<String, dynamic> json) =>
       _i2.GLoginData.fromJson(json);

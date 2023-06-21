@@ -147,6 +147,14 @@ Class _buildOperationReqClass(
       Method(
         (b) => b
           ..annotations.add(refer('override'))
+          ..returns =
+              refer('RequestState', 'package:ferry_exec/ferry_exec.dart')
+          ..type = MethodType.getter
+          ..name = 'state',
+      ),
+      Method(
+        (b) => b
+          ..annotations.add(refer('override'))
           ..returns = nullableDataTypeRef
           ..name = 'parseData'
           ..requiredParameters.add(
@@ -169,6 +177,8 @@ Class _buildOperationReqClass(
         },
       ),
       'executeOnListen': literalTrue,
+      'state': refer('RequestState', 'package:ferry_exec/ferry_exec.dart')
+          .property('Idle'),
     },
   ).rebuild(
     (b) => b
