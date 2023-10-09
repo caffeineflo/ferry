@@ -31,7 +31,9 @@ abstract class GAliasedHeroReq
       document: _i5.document,
       operationName: 'AliasedHero',
     )
-    ..executeOnListen = true;
+    ..executeOnListen = true
+    ..state = _i1.RequestState.Idle;
+
   @override
   _i3.GAliasedHeroVars get vars;
   @override
@@ -41,6 +43,7 @@ abstract class GAliasedHeroReq
         operation: operation,
         variables: vars.toJson(),
       );
+
   @override
   String? get requestId;
   @override
@@ -60,14 +63,19 @@ abstract class GAliasedHeroReq
   @override
   bool get executeOnListen;
   @override
+  _i1.RequestState get state;
+  @override
   _i2.GAliasedHeroData? parseData(Map<String, dynamic> json) =>
       _i2.GAliasedHeroData.fromJson(json);
+
   static Serializer<GAliasedHeroReq> get serializer =>
       _$gAliasedHeroReqSerializer;
+
   Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
         GAliasedHeroReq.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GAliasedHeroReq? fromJson(Map<String, dynamic> json) =>
       _i6.serializers.deserializeWith(
         GAliasedHeroReq.serializer,

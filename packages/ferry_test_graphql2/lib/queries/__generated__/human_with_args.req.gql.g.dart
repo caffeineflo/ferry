@@ -29,6 +29,9 @@ class _$GHumanWithArgsReqSerializer
       'executeOnListen',
       serializers.serialize(object.executeOnListen,
           specifiedType: const FullType(bool)),
+      'state',
+      serializers.serialize(object.state,
+          specifiedType: const FullType(_i1.RequestState)),
     ];
     Object? value;
     value = object.requestId;
@@ -120,6 +123,11 @@ class _$GHumanWithArgsReqSerializer
           result.executeOnListen = serializers.deserialize(value,
               specifiedType: const FullType(bool))! as bool;
           break;
+        case 'state':
+          result.state = serializers.deserialize(value,
+                  specifiedType: const FullType(_i1.RequestState))!
+              as _i1.RequestState;
+          break;
       }
     }
 
@@ -147,6 +155,8 @@ class _$GHumanWithArgsReq extends GHumanWithArgsReq {
   final _i1.FetchPolicy? fetchPolicy;
   @override
   final bool executeOnListen;
+  @override
+  final _i1.RequestState state;
 
   factory _$GHumanWithArgsReq(
           [void Function(GHumanWithArgsReqBuilder)? updates]) =>
@@ -161,13 +171,15 @@ class _$GHumanWithArgsReq extends GHumanWithArgsReq {
       this.updateCacheHandlerKey,
       this.updateCacheHandlerContext,
       this.fetchPolicy,
-      required this.executeOnListen})
+      required this.executeOnListen,
+      required this.state})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(vars, r'GHumanWithArgsReq', 'vars');
     BuiltValueNullFieldError.checkNotNull(
         operation, r'GHumanWithArgsReq', 'operation');
     BuiltValueNullFieldError.checkNotNull(
         executeOnListen, r'GHumanWithArgsReq', 'executeOnListen');
+    BuiltValueNullFieldError.checkNotNull(state, r'GHumanWithArgsReq', 'state');
   }
 
   @override
@@ -191,7 +203,8 @@ class _$GHumanWithArgsReq extends GHumanWithArgsReq {
         updateCacheHandlerKey == other.updateCacheHandlerKey &&
         updateCacheHandlerContext == other.updateCacheHandlerContext &&
         fetchPolicy == other.fetchPolicy &&
-        executeOnListen == other.executeOnListen;
+        executeOnListen == other.executeOnListen &&
+        state == other.state;
   }
 
   @override
@@ -206,6 +219,7 @@ class _$GHumanWithArgsReq extends GHumanWithArgsReq {
     _$hash = $jc(_$hash, updateCacheHandlerContext.hashCode);
     _$hash = $jc(_$hash, fetchPolicy.hashCode);
     _$hash = $jc(_$hash, executeOnListen.hashCode);
+    _$hash = $jc(_$hash, state.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -221,7 +235,8 @@ class _$GHumanWithArgsReq extends GHumanWithArgsReq {
           ..add('updateCacheHandlerKey', updateCacheHandlerKey)
           ..add('updateCacheHandlerContext', updateCacheHandlerContext)
           ..add('fetchPolicy', fetchPolicy)
-          ..add('executeOnListen', executeOnListen))
+          ..add('executeOnListen', executeOnListen)
+          ..add('state', state))
         .toString();
   }
 }
@@ -282,6 +297,10 @@ class GHumanWithArgsReqBuilder
   set executeOnListen(bool? executeOnListen) =>
       _$this._executeOnListen = executeOnListen;
 
+  _i1.RequestState? _state;
+  _i1.RequestState? get state => _$this._state;
+  set state(_i1.RequestState? state) => _$this._state = state;
+
   GHumanWithArgsReqBuilder() {
     GHumanWithArgsReq._initializeBuilder(this);
   }
@@ -298,6 +317,7 @@ class GHumanWithArgsReqBuilder
       _updateCacheHandlerContext = $v.updateCacheHandlerContext;
       _fetchPolicy = $v.fetchPolicy;
       _executeOnListen = $v.executeOnListen;
+      _state = $v.state;
       _$v = null;
     }
     return this;
@@ -332,7 +352,9 @@ class GHumanWithArgsReqBuilder
               updateCacheHandlerContext: updateCacheHandlerContext,
               fetchPolicy: fetchPolicy,
               executeOnListen: BuiltValueNullFieldError.checkNotNull(
-                  executeOnListen, r'GHumanWithArgsReq', 'executeOnListen'));
+                  executeOnListen, r'GHumanWithArgsReq', 'executeOnListen'),
+              state: BuiltValueNullFieldError.checkNotNull(
+                  state, r'GHumanWithArgsReq', 'state'));
     } catch (_) {
       late String _$failedField;
       try {

@@ -27,6 +27,9 @@ class _$GReviewsReqSerializer implements StructuredSerializer<GReviewsReq> {
       'executeOnListen',
       serializers.serialize(object.executeOnListen,
           specifiedType: const FullType(bool)),
+      'state',
+      serializers.serialize(object.state,
+          specifiedType: const FullType(_i1.RequestState)),
     ];
     Object? value;
     value = object.requestId;
@@ -117,6 +120,11 @@ class _$GReviewsReqSerializer implements StructuredSerializer<GReviewsReq> {
           result.executeOnListen = serializers.deserialize(value,
               specifiedType: const FullType(bool))! as bool;
           break;
+        case 'state':
+          result.state = serializers.deserialize(value,
+                  specifiedType: const FullType(_i1.RequestState))!
+              as _i1.RequestState;
+          break;
       }
     }
 
@@ -144,6 +152,8 @@ class _$GReviewsReq extends GReviewsReq {
   final _i1.FetchPolicy? fetchPolicy;
   @override
   final bool executeOnListen;
+  @override
+  final _i1.RequestState state;
 
   factory _$GReviewsReq([void Function(GReviewsReqBuilder)? updates]) =>
       (new GReviewsReqBuilder()..update(updates))._build();
@@ -157,13 +167,15 @@ class _$GReviewsReq extends GReviewsReq {
       this.updateCacheHandlerKey,
       this.updateCacheHandlerContext,
       this.fetchPolicy,
-      required this.executeOnListen})
+      required this.executeOnListen,
+      required this.state})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(vars, r'GReviewsReq', 'vars');
     BuiltValueNullFieldError.checkNotNull(
         operation, r'GReviewsReq', 'operation');
     BuiltValueNullFieldError.checkNotNull(
         executeOnListen, r'GReviewsReq', 'executeOnListen');
+    BuiltValueNullFieldError.checkNotNull(state, r'GReviewsReq', 'state');
   }
 
   @override
@@ -186,7 +198,8 @@ class _$GReviewsReq extends GReviewsReq {
         updateCacheHandlerKey == other.updateCacheHandlerKey &&
         updateCacheHandlerContext == other.updateCacheHandlerContext &&
         fetchPolicy == other.fetchPolicy &&
-        executeOnListen == other.executeOnListen;
+        executeOnListen == other.executeOnListen &&
+        state == other.state;
   }
 
   @override
@@ -201,6 +214,7 @@ class _$GReviewsReq extends GReviewsReq {
     _$hash = $jc(_$hash, updateCacheHandlerContext.hashCode);
     _$hash = $jc(_$hash, fetchPolicy.hashCode);
     _$hash = $jc(_$hash, executeOnListen.hashCode);
+    _$hash = $jc(_$hash, state.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -216,7 +230,8 @@ class _$GReviewsReq extends GReviewsReq {
           ..add('updateCacheHandlerKey', updateCacheHandlerKey)
           ..add('updateCacheHandlerContext', updateCacheHandlerContext)
           ..add('fetchPolicy', fetchPolicy)
-          ..add('executeOnListen', executeOnListen))
+          ..add('executeOnListen', executeOnListen)
+          ..add('state', state))
         .toString();
   }
 }
@@ -274,6 +289,10 @@ class GReviewsReqBuilder implements Builder<GReviewsReq, GReviewsReqBuilder> {
   set executeOnListen(bool? executeOnListen) =>
       _$this._executeOnListen = executeOnListen;
 
+  _i1.RequestState? _state;
+  _i1.RequestState? get state => _$this._state;
+  set state(_i1.RequestState? state) => _$this._state = state;
+
   GReviewsReqBuilder() {
     GReviewsReq._initializeBuilder(this);
   }
@@ -290,6 +309,7 @@ class GReviewsReqBuilder implements Builder<GReviewsReq, GReviewsReqBuilder> {
       _updateCacheHandlerContext = $v.updateCacheHandlerContext;
       _fetchPolicy = $v.fetchPolicy;
       _executeOnListen = $v.executeOnListen;
+      _state = $v.state;
       _$v = null;
     }
     return this;
@@ -324,7 +344,9 @@ class GReviewsReqBuilder implements Builder<GReviewsReq, GReviewsReqBuilder> {
               updateCacheHandlerContext: updateCacheHandlerContext,
               fetchPolicy: fetchPolicy,
               executeOnListen: BuiltValueNullFieldError.checkNotNull(
-                  executeOnListen, r'GReviewsReq', 'executeOnListen'));
+                  executeOnListen, r'GReviewsReq', 'executeOnListen'),
+              state: BuiltValueNullFieldError.checkNotNull(
+                  state, r'GReviewsReq', 'state'));
     } catch (_) {
       late String _$failedField;
       try {

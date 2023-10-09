@@ -32,6 +32,9 @@ class _$GHeroForEpisodeReqSerializer
       'executeOnListen',
       serializers.serialize(object.executeOnListen,
           specifiedType: const FullType(bool)),
+      'state',
+      serializers.serialize(object.state,
+          specifiedType: const FullType(_i1.RequestState)),
     ];
     Object? value;
     value = object.requestId;
@@ -122,6 +125,11 @@ class _$GHeroForEpisodeReqSerializer
         case 'executeOnListen':
           result.executeOnListen = serializers.deserialize(value,
               specifiedType: const FullType(bool))! as bool;
+          break;
+        case 'state':
+          result.state = serializers.deserialize(value,
+                  specifiedType: const FullType(_i1.RequestState))!
+              as _i1.RequestState;
           break;
       }
     }
@@ -223,6 +231,8 @@ class _$GHeroForEpisodeReq extends GHeroForEpisodeReq {
   final _i1.FetchPolicy? fetchPolicy;
   @override
   final bool executeOnListen;
+  @override
+  final _i1.RequestState state;
 
   factory _$GHeroForEpisodeReq(
           [void Function(GHeroForEpisodeReqBuilder)? updates]) =>
@@ -237,13 +247,16 @@ class _$GHeroForEpisodeReq extends GHeroForEpisodeReq {
       this.updateCacheHandlerKey,
       this.updateCacheHandlerContext,
       this.fetchPolicy,
-      required this.executeOnListen})
+      required this.executeOnListen,
+      required this.state})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(vars, r'GHeroForEpisodeReq', 'vars');
     BuiltValueNullFieldError.checkNotNull(
         operation, r'GHeroForEpisodeReq', 'operation');
     BuiltValueNullFieldError.checkNotNull(
         executeOnListen, r'GHeroForEpisodeReq', 'executeOnListen');
+    BuiltValueNullFieldError.checkNotNull(
+        state, r'GHeroForEpisodeReq', 'state');
   }
 
   @override
@@ -268,7 +281,8 @@ class _$GHeroForEpisodeReq extends GHeroForEpisodeReq {
         updateCacheHandlerKey == other.updateCacheHandlerKey &&
         updateCacheHandlerContext == other.updateCacheHandlerContext &&
         fetchPolicy == other.fetchPolicy &&
-        executeOnListen == other.executeOnListen;
+        executeOnListen == other.executeOnListen &&
+        state == other.state;
   }
 
   @override
@@ -283,6 +297,7 @@ class _$GHeroForEpisodeReq extends GHeroForEpisodeReq {
     _$hash = $jc(_$hash, updateCacheHandlerContext.hashCode);
     _$hash = $jc(_$hash, fetchPolicy.hashCode);
     _$hash = $jc(_$hash, executeOnListen.hashCode);
+    _$hash = $jc(_$hash, state.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -298,7 +313,8 @@ class _$GHeroForEpisodeReq extends GHeroForEpisodeReq {
           ..add('updateCacheHandlerKey', updateCacheHandlerKey)
           ..add('updateCacheHandlerContext', updateCacheHandlerContext)
           ..add('fetchPolicy', fetchPolicy)
-          ..add('executeOnListen', executeOnListen))
+          ..add('executeOnListen', executeOnListen)
+          ..add('state', state))
         .toString();
   }
 }
@@ -359,6 +375,10 @@ class GHeroForEpisodeReqBuilder
   set executeOnListen(bool? executeOnListen) =>
       _$this._executeOnListen = executeOnListen;
 
+  _i1.RequestState? _state;
+  _i1.RequestState? get state => _$this._state;
+  set state(_i1.RequestState? state) => _$this._state = state;
+
   GHeroForEpisodeReqBuilder() {
     GHeroForEpisodeReq._initializeBuilder(this);
   }
@@ -375,6 +395,7 @@ class GHeroForEpisodeReqBuilder
       _updateCacheHandlerContext = $v.updateCacheHandlerContext;
       _fetchPolicy = $v.fetchPolicy;
       _executeOnListen = $v.executeOnListen;
+      _state = $v.state;
       _$v = null;
     }
     return this;
@@ -409,7 +430,9 @@ class GHeroForEpisodeReqBuilder
               updateCacheHandlerContext: updateCacheHandlerContext,
               fetchPolicy: fetchPolicy,
               executeOnListen: BuiltValueNullFieldError.checkNotNull(
-                  executeOnListen, r'GHeroForEpisodeReq', 'executeOnListen'));
+                  executeOnListen, r'GHeroForEpisodeReq', 'executeOnListen'),
+              state: BuiltValueNullFieldError.checkNotNull(
+                  state, r'GHeroForEpisodeReq', 'state'));
     } catch (_) {
       late String _$failedField;
       try {

@@ -31,7 +31,9 @@ abstract class GHeroNoVarsReq
       document: _i5.document,
       operationName: 'HeroNoVars',
     )
-    ..executeOnListen = true;
+    ..executeOnListen = true
+    ..state = _i1.RequestState.Idle;
+
   @override
   _i3.GHeroNoVarsVars get vars;
   @override
@@ -41,6 +43,7 @@ abstract class GHeroNoVarsReq
         operation: operation,
         variables: vars.toJson(),
       );
+
   @override
   String? get requestId;
   @override
@@ -60,14 +63,19 @@ abstract class GHeroNoVarsReq
   @override
   bool get executeOnListen;
   @override
+  _i1.RequestState get state;
+  @override
   _i2.GHeroNoVarsData? parseData(Map<String, dynamic> json) =>
       _i2.GHeroNoVarsData.fromJson(json);
+
   static Serializer<GHeroNoVarsReq> get serializer =>
       _$gHeroNoVarsReqSerializer;
+
   Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
         GHeroNoVarsReq.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GHeroNoVarsReq? fromJson(Map<String, dynamic> json) =>
       _i6.serializers.deserializeWith(
         GHeroNoVarsReq.serializer,

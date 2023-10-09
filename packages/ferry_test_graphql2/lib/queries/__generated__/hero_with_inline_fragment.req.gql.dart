@@ -32,7 +32,9 @@ abstract class GHeroForEpisodeReq
       document: _i5.document,
       operationName: 'HeroForEpisode',
     )
-    ..executeOnListen = true;
+    ..executeOnListen = true
+    ..state = _i1.RequestState.Idle;
+
   @override
   _i3.GHeroForEpisodeVars get vars;
   @override
@@ -42,6 +44,7 @@ abstract class GHeroForEpisodeReq
         operation: operation,
         variables: vars.toJson(),
       );
+
   @override
   String? get requestId;
   @override
@@ -61,14 +64,19 @@ abstract class GHeroForEpisodeReq
   @override
   bool get executeOnListen;
   @override
+  _i1.RequestState get state;
+  @override
   _i2.GHeroForEpisodeData? parseData(Map<String, dynamic> json) =>
       _i2.GHeroForEpisodeData.fromJson(json);
+
   static Serializer<GHeroForEpisodeReq> get serializer =>
       _$gHeroForEpisodeReqSerializer;
+
   Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
         GHeroForEpisodeReq.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GHeroForEpisodeReq? fromJson(Map<String, dynamic> json) =>
       _i6.serializers.deserializeWith(
         GHeroForEpisodeReq.serializer,
@@ -88,6 +96,7 @@ abstract class GDroidFragmentReq
   static void _initializeBuilder(GDroidFragmentReqBuilder b) => b
     ..document = _i5.document
     ..fragmentName = 'DroidFragment';
+
   @override
   _i3.GDroidFragmentVars get vars;
   @override
@@ -99,12 +108,15 @@ abstract class GDroidFragmentReq
   @override
   _i2.GDroidFragmentData? parseData(Map<String, dynamic> json) =>
       _i2.GDroidFragmentData.fromJson(json);
+
   static Serializer<GDroidFragmentReq> get serializer =>
       _$gDroidFragmentReqSerializer;
+
   Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
         GDroidFragmentReq.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GDroidFragmentReq? fromJson(Map<String, dynamic> json) =>
       _i6.serializers.deserializeWith(
         GDroidFragmentReq.serializer,

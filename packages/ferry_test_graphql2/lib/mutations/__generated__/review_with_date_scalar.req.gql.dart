@@ -31,7 +31,9 @@ abstract class GReviewWithDateReq
       document: _i5.document,
       operationName: 'ReviewWithDate',
     )
-    ..executeOnListen = true;
+    ..executeOnListen = true
+    ..state = _i1.RequestState.Idle;
+
   @override
   _i3.GReviewWithDateVars get vars;
   @override
@@ -41,6 +43,7 @@ abstract class GReviewWithDateReq
         operation: operation,
         variables: vars.toJson(),
       );
+
   @override
   String? get requestId;
   @override
@@ -60,14 +63,19 @@ abstract class GReviewWithDateReq
   @override
   bool get executeOnListen;
   @override
+  _i1.RequestState get state;
+  @override
   _i2.GReviewWithDateData? parseData(Map<String, dynamic> json) =>
       _i2.GReviewWithDateData.fromJson(json);
+
   static Serializer<GReviewWithDateReq> get serializer =>
       _$gReviewWithDateReqSerializer;
+
   Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
         GReviewWithDateReq.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GReviewWithDateReq? fromJson(Map<String, dynamic> json) =>
       _i6.serializers.deserializeWith(
         GReviewWithDateReq.serializer,

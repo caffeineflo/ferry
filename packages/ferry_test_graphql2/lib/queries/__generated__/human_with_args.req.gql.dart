@@ -31,7 +31,9 @@ abstract class GHumanWithArgsReq
       document: _i5.document,
       operationName: 'HumanWithArgs',
     )
-    ..executeOnListen = true;
+    ..executeOnListen = true
+    ..state = _i1.RequestState.Idle;
+
   @override
   _i3.GHumanWithArgsVars get vars;
   @override
@@ -41,6 +43,7 @@ abstract class GHumanWithArgsReq
         operation: operation,
         variables: vars.toJson(),
       );
+
   @override
   String? get requestId;
   @override
@@ -60,14 +63,19 @@ abstract class GHumanWithArgsReq
   @override
   bool get executeOnListen;
   @override
+  _i1.RequestState get state;
+  @override
   _i2.GHumanWithArgsData? parseData(Map<String, dynamic> json) =>
       _i2.GHumanWithArgsData.fromJson(json);
+
   static Serializer<GHumanWithArgsReq> get serializer =>
       _$gHumanWithArgsReqSerializer;
+
   Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
         GHumanWithArgsReq.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GHumanWithArgsReq? fromJson(Map<String, dynamic> json) =>
       _i6.serializers.deserializeWith(
         GHumanWithArgsReq.serializer,

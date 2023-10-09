@@ -31,7 +31,9 @@ abstract class GReviewsByIDReq
       document: _i5.document,
       operationName: 'ReviewsByID',
     )
-    ..executeOnListen = true;
+    ..executeOnListen = true
+    ..state = _i1.RequestState.Idle;
+
   @override
   _i3.GReviewsByIDVars get vars;
   @override
@@ -41,6 +43,7 @@ abstract class GReviewsByIDReq
         operation: operation,
         variables: vars.toJson(),
       );
+
   @override
   String? get requestId;
   @override
@@ -60,14 +63,19 @@ abstract class GReviewsByIDReq
   @override
   bool get executeOnListen;
   @override
+  _i1.RequestState get state;
+  @override
   _i2.GReviewsByIDData? parseData(Map<String, dynamic> json) =>
       _i2.GReviewsByIDData.fromJson(json);
+
   static Serializer<GReviewsByIDReq> get serializer =>
       _$gReviewsByIDReqSerializer;
+
   Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
         GReviewsByIDReq.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GReviewsByIDReq? fromJson(Map<String, dynamic> json) =>
       _i6.serializers.deserializeWith(
         GReviewsByIDReq.serializer,
