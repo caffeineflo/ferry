@@ -19,6 +19,7 @@ class OptimisticTypedLink extends TypedLink {
                 operationRequest: request,
                 data: request.optimisticResponse,
                 dataSource: DataSource.Optimistic,
+                state: ResponseState.Succeeded,
               ),
             );
 }

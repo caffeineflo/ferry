@@ -24,20 +24,17 @@ class ErrorTypedLink extends TypedLink {
     try {
       return forward!(operationRequest).transform(
         StreamTransformer.fromHandlers(handleError: (error, stackTrace, sink) {
-          operationRequest.state = RequestState.Failed;
-
           sink.add(OperationResponse(
             operationRequest: operationRequest,
             linkException: error is LinkException
                 ? error
                 : TypedLinkException(error, stackTrace),
             dataSource: DataSource.None,
+            state: ResponseState.Failed,
           ));
         }),
       );
     } catch (error, stackTrace) {
-      operationRequest.state = RequestState.Failed;
-
       return Stream.value(
         OperationResponse(
           operationRequest: operationRequest,
@@ -45,6 +42,7 @@ class ErrorTypedLink extends TypedLink {
               ? error
               : TypedLinkException(error, stackTrace),
           dataSource: DataSource.None,
+          state: ResponseState.Failed,
         ),
       );
     }

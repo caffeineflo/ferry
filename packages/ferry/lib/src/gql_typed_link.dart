@@ -32,6 +32,7 @@ class GqlTypedLink extends TypedLink {
                       response.context.entry<ResponseExtensions>()?.extensions,
                   graphqlErrors: response.errors,
                   dataSource: DataSource.Link,
+                  state: ResponseState.Succeeded,
                 ),
               ),
               handleError: (error, stackTrace, sink) => sink.add(
@@ -44,6 +45,7 @@ class GqlTypedLink extends TypedLink {
                           parsedResponse: null,
                         ),
                   dataSource: DataSource.Link,
+                  state: ResponseState.Failed,
                 ),
               ),
             ),

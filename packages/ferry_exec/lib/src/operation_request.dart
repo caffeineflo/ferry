@@ -2,20 +2,6 @@ import 'package:gql_exec/gql_exec.dart';
 
 import 'package:ferry_exec/src/fetch_policy.dart';
 
-enum RequestState {
-  /// Before the request is initiated.
-  Idle,
-
-  /// When the request is ongoing.
-  Loading,
-
-  /// When the request is successful.
-  Succeeded,
-
-  /// When the request failed.
-  Failed,
-}
-
 abstract class OperationRequest<TData, TVars> {
   TVars get vars;
 
@@ -49,9 +35,6 @@ abstract class OperationRequest<TData, TVars> {
   /// If set to `true`, this request will be automatically added to the request
   /// controller when the stream returned by `request()` is listened to
   bool get executeOnListen;
-
-  /// The current state of the request
-  RequestState state = RequestState.Idle;
 
   /// Parses data into a concrete type for the given operation
   ///

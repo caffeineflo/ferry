@@ -19,6 +19,17 @@ enum DataSource {
   Optimistic,
 }
 
+enum ResponseState {
+  /// Before the response has been requested.
+  Idle,
+
+  /// When the response was successfully fetched.
+  Succeeded,
+
+  /// When the response failed to fetch.
+  Failed,
+}
+
 /// Encapsulates a GraphQL operation's response, with typed
 /// input and responses, and errors.
 @immutable
@@ -41,8 +52,11 @@ class OperationResponse<TData, TVars> {
   /// Any error returned by [Link]
   final LinkException? linkException;
 
+  /// The current state of the request
+  final ResponseState state;
+
   /// If this response is loading.
-  bool get loading => operationRequest.state == RequestState.Loading;
+  bool get loading => state == ResponseState.Idle;
 
   /// If this response has any error.
   bool get hasErrors =>
@@ -57,6 +71,7 @@ class OperationResponse<TData, TVars> {
     this.extensions,
     this.graphqlErrors,
     this.linkException,
+    this.state = ResponseState.Idle,
   });
 
   List<Object?> _getChildren() => [
