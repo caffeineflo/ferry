@@ -31,8 +31,7 @@ abstract class GGetAuthorByIdReq
       document: _i5.document,
       operationName: 'GetAuthorById',
     )
-    ..executeOnListen = true
-    ..state = _i1.RequestState.Idle;
+    ..executeOnListen = true;
   @override
   _i3.GGetAuthorByIdVars get vars;
   @override
@@ -60,8 +59,6 @@ abstract class GGetAuthorByIdReq
   _i1.FetchPolicy? get fetchPolicy;
   @override
   bool get executeOnListen;
-  @override
-  _i1.RequestState get state;
   @override
   _i2.GGetAuthorByIdData? parseData(Map<String, dynamic> json) =>
       _i2.GGetAuthorByIdData.fromJson(json);

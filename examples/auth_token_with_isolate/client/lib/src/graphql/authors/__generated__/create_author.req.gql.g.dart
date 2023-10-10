@@ -29,9 +29,6 @@ class _$GCreateAuthorReqSerializer
       'executeOnListen',
       serializers.serialize(object.executeOnListen,
           specifiedType: const FullType(bool)),
-      'state',
-      serializers.serialize(object.state,
-          specifiedType: const FullType(_i1.RequestState)),
     ];
     Object? value;
     value = object.requestId;
@@ -123,11 +120,6 @@ class _$GCreateAuthorReqSerializer
           result.executeOnListen = serializers.deserialize(value,
               specifiedType: const FullType(bool))! as bool;
           break;
-        case 'state':
-          result.state = serializers.deserialize(value,
-                  specifiedType: const FullType(_i1.RequestState))!
-              as _i1.RequestState;
-          break;
       }
     }
 
@@ -155,8 +147,6 @@ class _$GCreateAuthorReq extends GCreateAuthorReq {
   final _i1.FetchPolicy? fetchPolicy;
   @override
   final bool executeOnListen;
-  @override
-  final _i1.RequestState state;
 
   factory _$GCreateAuthorReq(
           [void Function(GCreateAuthorReqBuilder)? updates]) =>
@@ -171,15 +161,13 @@ class _$GCreateAuthorReq extends GCreateAuthorReq {
       this.updateCacheHandlerKey,
       this.updateCacheHandlerContext,
       this.fetchPolicy,
-      required this.executeOnListen,
-      required this.state})
+      required this.executeOnListen})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(vars, r'GCreateAuthorReq', 'vars');
     BuiltValueNullFieldError.checkNotNull(
         operation, r'GCreateAuthorReq', 'operation');
     BuiltValueNullFieldError.checkNotNull(
         executeOnListen, r'GCreateAuthorReq', 'executeOnListen');
-    BuiltValueNullFieldError.checkNotNull(state, r'GCreateAuthorReq', 'state');
   }
 
   @override
@@ -203,8 +191,7 @@ class _$GCreateAuthorReq extends GCreateAuthorReq {
         updateCacheHandlerKey == other.updateCacheHandlerKey &&
         updateCacheHandlerContext == other.updateCacheHandlerContext &&
         fetchPolicy == other.fetchPolicy &&
-        executeOnListen == other.executeOnListen &&
-        state == other.state;
+        executeOnListen == other.executeOnListen;
   }
 
   @override
@@ -219,7 +206,6 @@ class _$GCreateAuthorReq extends GCreateAuthorReq {
     _$hash = $jc(_$hash, updateCacheHandlerContext.hashCode);
     _$hash = $jc(_$hash, fetchPolicy.hashCode);
     _$hash = $jc(_$hash, executeOnListen.hashCode);
-    _$hash = $jc(_$hash, state.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -235,8 +221,7 @@ class _$GCreateAuthorReq extends GCreateAuthorReq {
           ..add('updateCacheHandlerKey', updateCacheHandlerKey)
           ..add('updateCacheHandlerContext', updateCacheHandlerContext)
           ..add('fetchPolicy', fetchPolicy)
-          ..add('executeOnListen', executeOnListen)
-          ..add('state', state))
+          ..add('executeOnListen', executeOnListen))
         .toString();
   }
 }
@@ -297,10 +282,6 @@ class GCreateAuthorReqBuilder
   set executeOnListen(bool? executeOnListen) =>
       _$this._executeOnListen = executeOnListen;
 
-  _i1.RequestState? _state;
-  _i1.RequestState? get state => _$this._state;
-  set state(_i1.RequestState? state) => _$this._state = state;
-
   GCreateAuthorReqBuilder() {
     GCreateAuthorReq._initializeBuilder(this);
   }
@@ -317,7 +298,6 @@ class GCreateAuthorReqBuilder
       _updateCacheHandlerContext = $v.updateCacheHandlerContext;
       _fetchPolicy = $v.fetchPolicy;
       _executeOnListen = $v.executeOnListen;
-      _state = $v.state;
       _$v = null;
     }
     return this;
@@ -352,9 +332,7 @@ class GCreateAuthorReqBuilder
               updateCacheHandlerContext: updateCacheHandlerContext,
               fetchPolicy: fetchPolicy,
               executeOnListen: BuiltValueNullFieldError.checkNotNull(
-                  executeOnListen, r'GCreateAuthorReq', 'executeOnListen'),
-              state: BuiltValueNullFieldError.checkNotNull(
-                  state, r'GCreateAuthorReq', 'state'));
+                  executeOnListen, r'GCreateAuthorReq', 'executeOnListen'));
     } catch (_) {
       late String _$failedField;
       try {

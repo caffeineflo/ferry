@@ -31,8 +31,7 @@ abstract class GReviewWithDateReq
       document: _i5.document,
       operationName: 'ReviewWithDate',
     )
-    ..executeOnListen = true
-    ..state = _i1.RequestState.Idle;
+    ..executeOnListen = true;
 
   @override
   _i3.GReviewWithDateVars get vars;
@@ -62,8 +61,6 @@ abstract class GReviewWithDateReq
   _i1.FetchPolicy? get fetchPolicy;
   @override
   bool get executeOnListen;
-  @override
-  _i1.RequestState get state;
   @override
   _i2.GReviewWithDateData? parseData(Map<String, dynamic> json) =>
       _i2.GReviewWithDateData.fromJson(json);

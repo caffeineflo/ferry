@@ -32,8 +32,7 @@ abstract class GHeroForEpisodeReq
       document: _i5.document,
       operationName: 'HeroForEpisode',
     )
-    ..executeOnListen = true
-    ..state = _i1.RequestState.Idle;
+    ..executeOnListen = true;
 
   @override
   _i3.GHeroForEpisodeVars get vars;
@@ -63,8 +62,6 @@ abstract class GHeroForEpisodeReq
   _i1.FetchPolicy? get fetchPolicy;
   @override
   bool get executeOnListen;
-  @override
-  _i1.RequestState get state;
   @override
   _i2.GHeroForEpisodeData? parseData(Map<String, dynamic> json) =>
       _i2.GHeroForEpisodeData.fromJson(json);

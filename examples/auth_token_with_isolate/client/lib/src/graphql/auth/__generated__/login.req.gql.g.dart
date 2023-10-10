@@ -27,9 +27,6 @@ class _$GLoginReqSerializer implements StructuredSerializer<GLoginReq> {
       'executeOnListen',
       serializers.serialize(object.executeOnListen,
           specifiedType: const FullType(bool)),
-      'state',
-      serializers.serialize(object.state,
-          specifiedType: const FullType(_i1.RequestState)),
     ];
     Object? value;
     value = object.requestId;
@@ -120,11 +117,6 @@ class _$GLoginReqSerializer implements StructuredSerializer<GLoginReq> {
           result.executeOnListen = serializers.deserialize(value,
               specifiedType: const FullType(bool))! as bool;
           break;
-        case 'state':
-          result.state = serializers.deserialize(value,
-                  specifiedType: const FullType(_i1.RequestState))!
-              as _i1.RequestState;
-          break;
       }
     }
 
@@ -152,8 +144,6 @@ class _$GLoginReq extends GLoginReq {
   final _i1.FetchPolicy? fetchPolicy;
   @override
   final bool executeOnListen;
-  @override
-  final _i1.RequestState state;
 
   factory _$GLoginReq([void Function(GLoginReqBuilder)? updates]) =>
       (new GLoginReqBuilder()..update(updates))._build();
@@ -167,14 +157,12 @@ class _$GLoginReq extends GLoginReq {
       this.updateCacheHandlerKey,
       this.updateCacheHandlerContext,
       this.fetchPolicy,
-      required this.executeOnListen,
-      required this.state})
+      required this.executeOnListen})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(vars, r'GLoginReq', 'vars');
     BuiltValueNullFieldError.checkNotNull(operation, r'GLoginReq', 'operation');
     BuiltValueNullFieldError.checkNotNull(
         executeOnListen, r'GLoginReq', 'executeOnListen');
-    BuiltValueNullFieldError.checkNotNull(state, r'GLoginReq', 'state');
   }
 
   @override
@@ -197,8 +185,7 @@ class _$GLoginReq extends GLoginReq {
         updateCacheHandlerKey == other.updateCacheHandlerKey &&
         updateCacheHandlerContext == other.updateCacheHandlerContext &&
         fetchPolicy == other.fetchPolicy &&
-        executeOnListen == other.executeOnListen &&
-        state == other.state;
+        executeOnListen == other.executeOnListen;
   }
 
   @override
@@ -213,7 +200,6 @@ class _$GLoginReq extends GLoginReq {
     _$hash = $jc(_$hash, updateCacheHandlerContext.hashCode);
     _$hash = $jc(_$hash, fetchPolicy.hashCode);
     _$hash = $jc(_$hash, executeOnListen.hashCode);
-    _$hash = $jc(_$hash, state.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -229,8 +215,7 @@ class _$GLoginReq extends GLoginReq {
           ..add('updateCacheHandlerKey', updateCacheHandlerKey)
           ..add('updateCacheHandlerContext', updateCacheHandlerContext)
           ..add('fetchPolicy', fetchPolicy)
-          ..add('executeOnListen', executeOnListen)
-          ..add('state', state))
+          ..add('executeOnListen', executeOnListen))
         .toString();
   }
 }
@@ -287,10 +272,6 @@ class GLoginReqBuilder implements Builder<GLoginReq, GLoginReqBuilder> {
   set executeOnListen(bool? executeOnListen) =>
       _$this._executeOnListen = executeOnListen;
 
-  _i1.RequestState? _state;
-  _i1.RequestState? get state => _$this._state;
-  set state(_i1.RequestState? state) => _$this._state = state;
-
   GLoginReqBuilder() {
     GLoginReq._initializeBuilder(this);
   }
@@ -307,7 +288,6 @@ class GLoginReqBuilder implements Builder<GLoginReq, GLoginReqBuilder> {
       _updateCacheHandlerContext = $v.updateCacheHandlerContext;
       _fetchPolicy = $v.fetchPolicy;
       _executeOnListen = $v.executeOnListen;
-      _state = $v.state;
       _$v = null;
     }
     return this;
@@ -342,9 +322,7 @@ class GLoginReqBuilder implements Builder<GLoginReq, GLoginReqBuilder> {
               updateCacheHandlerContext: updateCacheHandlerContext,
               fetchPolicy: fetchPolicy,
               executeOnListen: BuiltValueNullFieldError.checkNotNull(
-                  executeOnListen, r'GLoginReq', 'executeOnListen'),
-              state: BuiltValueNullFieldError.checkNotNull(
-                  state, r'GLoginReq', 'state'));
+                  executeOnListen, r'GLoginReq', 'executeOnListen'));
     } catch (_) {
       late String _$failedField;
       try {

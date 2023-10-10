@@ -31,8 +31,7 @@ abstract class GReviewsByIDReq
       document: _i5.document,
       operationName: 'ReviewsByID',
     )
-    ..executeOnListen = true
-    ..state = _i1.RequestState.Idle;
+    ..executeOnListen = true;
 
   @override
   _i3.GReviewsByIDVars get vars;
@@ -62,8 +61,6 @@ abstract class GReviewsByIDReq
   _i1.FetchPolicy? get fetchPolicy;
   @override
   bool get executeOnListen;
-  @override
-  _i1.RequestState get state;
   @override
   _i2.GReviewsByIDData? parseData(Map<String, dynamic> json) =>
       _i2.GReviewsByIDData.fromJson(json);

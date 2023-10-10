@@ -29,9 +29,6 @@ class _$GAllPokemonReqSerializer
       'executeOnListen',
       serializers.serialize(object.executeOnListen,
           specifiedType: const FullType(bool)),
-      'state',
-      serializers.serialize(object.state,
-          specifiedType: const FullType(_i1.RequestState)),
     ];
     Object? value;
     value = object.requestId;
@@ -123,11 +120,6 @@ class _$GAllPokemonReqSerializer
           result.executeOnListen = serializers.deserialize(value,
               specifiedType: const FullType(bool))! as bool;
           break;
-        case 'state':
-          result.state = serializers.deserialize(value,
-                  specifiedType: const FullType(_i1.RequestState))!
-              as _i1.RequestState;
-          break;
       }
     }
 
@@ -155,8 +147,6 @@ class _$GAllPokemonReq extends GAllPokemonReq {
   final _i1.FetchPolicy? fetchPolicy;
   @override
   final bool executeOnListen;
-  @override
-  final _i1.RequestState state;
 
   factory _$GAllPokemonReq([void Function(GAllPokemonReqBuilder)? updates]) =>
       (new GAllPokemonReqBuilder()..update(updates))._build();
@@ -170,15 +160,13 @@ class _$GAllPokemonReq extends GAllPokemonReq {
       this.updateCacheHandlerKey,
       this.updateCacheHandlerContext,
       this.fetchPolicy,
-      required this.executeOnListen,
-      required this.state})
+      required this.executeOnListen})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(vars, r'GAllPokemonReq', 'vars');
     BuiltValueNullFieldError.checkNotNull(
         operation, r'GAllPokemonReq', 'operation');
     BuiltValueNullFieldError.checkNotNull(
         executeOnListen, r'GAllPokemonReq', 'executeOnListen');
-    BuiltValueNullFieldError.checkNotNull(state, r'GAllPokemonReq', 'state');
   }
 
   @override
@@ -202,8 +190,7 @@ class _$GAllPokemonReq extends GAllPokemonReq {
         updateCacheHandlerKey == other.updateCacheHandlerKey &&
         updateCacheHandlerContext == other.updateCacheHandlerContext &&
         fetchPolicy == other.fetchPolicy &&
-        executeOnListen == other.executeOnListen &&
-        state == other.state;
+        executeOnListen == other.executeOnListen;
   }
 
   @override
@@ -218,7 +205,6 @@ class _$GAllPokemonReq extends GAllPokemonReq {
     _$hash = $jc(_$hash, updateCacheHandlerContext.hashCode);
     _$hash = $jc(_$hash, fetchPolicy.hashCode);
     _$hash = $jc(_$hash, executeOnListen.hashCode);
-    _$hash = $jc(_$hash, state.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -234,8 +220,7 @@ class _$GAllPokemonReq extends GAllPokemonReq {
           ..add('updateCacheHandlerKey', updateCacheHandlerKey)
           ..add('updateCacheHandlerContext', updateCacheHandlerContext)
           ..add('fetchPolicy', fetchPolicy)
-          ..add('executeOnListen', executeOnListen)
-          ..add('state', state))
+          ..add('executeOnListen', executeOnListen))
         .toString();
   }
 }
@@ -295,10 +280,6 @@ class GAllPokemonReqBuilder
   set executeOnListen(bool? executeOnListen) =>
       _$this._executeOnListen = executeOnListen;
 
-  _i1.RequestState? _state;
-  _i1.RequestState? get state => _$this._state;
-  set state(_i1.RequestState? state) => _$this._state = state;
-
   GAllPokemonReqBuilder() {
     GAllPokemonReq._initializeBuilder(this);
   }
@@ -315,7 +296,6 @@ class GAllPokemonReqBuilder
       _updateCacheHandlerContext = $v.updateCacheHandlerContext;
       _fetchPolicy = $v.fetchPolicy;
       _executeOnListen = $v.executeOnListen;
-      _state = $v.state;
       _$v = null;
     }
     return this;
@@ -350,9 +330,7 @@ class GAllPokemonReqBuilder
               updateCacheHandlerContext: updateCacheHandlerContext,
               fetchPolicy: fetchPolicy,
               executeOnListen: BuiltValueNullFieldError.checkNotNull(
-                  executeOnListen, r'GAllPokemonReq', 'executeOnListen'),
-              state: BuiltValueNullFieldError.checkNotNull(
-                  state, r'GAllPokemonReq', 'state'));
+                  executeOnListen, r'GAllPokemonReq', 'executeOnListen'));
     } catch (_) {
       late String _$failedField;
       try {

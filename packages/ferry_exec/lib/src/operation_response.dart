@@ -52,7 +52,7 @@ class OperationResponse<TData, TVars> {
   /// Any error returned by [Link]
   final LinkException? linkException;
 
-  /// The current state of the request
+  /// The current state of the response
   final ResponseState state;
 
   /// If this response is loading.
@@ -81,6 +81,7 @@ class OperationResponse<TData, TVars> {
         extensions,
         graphqlErrors,
         linkException,
+        state,
       ];
 
   @override

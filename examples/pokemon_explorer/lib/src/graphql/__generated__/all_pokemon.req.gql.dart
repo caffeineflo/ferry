@@ -30,8 +30,7 @@ abstract class GAllPokemonReq
       document: _i5.document,
       operationName: 'AllPokemon',
     )
-    ..executeOnListen = true
-    ..state = _i1.RequestState.Idle;
+    ..executeOnListen = true;
   @override
   _i3.GAllPokemonVars get vars;
   @override
@@ -59,8 +58,6 @@ abstract class GAllPokemonReq
   _i1.FetchPolicy? get fetchPolicy;
   @override
   bool get executeOnListen;
-  @override
-  _i1.RequestState get state;
   @override
   _i2.GAllPokemonData? parseData(Map<String, dynamic> json) =>
       _i2.GAllPokemonData.fromJson(json);

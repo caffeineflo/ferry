@@ -37,9 +37,6 @@ class _$GHeroWithFragmentsReqSerializer
       'executeOnListen',
       serializers.serialize(object.executeOnListen,
           specifiedType: const FullType(bool)),
-      'state',
-      serializers.serialize(object.state,
-          specifiedType: const FullType(_i1.RequestState)),
     ];
     Object? value;
     value = object.requestId;
@@ -130,11 +127,6 @@ class _$GHeroWithFragmentsReqSerializer
         case 'executeOnListen':
           result.executeOnListen = serializers.deserialize(value,
               specifiedType: const FullType(bool))! as bool;
-          break;
-        case 'state':
-          result.state = serializers.deserialize(value,
-                  specifiedType: const FullType(_i1.RequestState))!
-              as _i1.RequestState;
           break;
       }
     }
@@ -312,8 +304,6 @@ class _$GHeroWithFragmentsReq extends GHeroWithFragmentsReq {
   final _i1.FetchPolicy? fetchPolicy;
   @override
   final bool executeOnListen;
-  @override
-  final _i1.RequestState state;
 
   factory _$GHeroWithFragmentsReq(
           [void Function(GHeroWithFragmentsReqBuilder)? updates]) =>
@@ -328,8 +318,7 @@ class _$GHeroWithFragmentsReq extends GHeroWithFragmentsReq {
       this.updateCacheHandlerKey,
       this.updateCacheHandlerContext,
       this.fetchPolicy,
-      required this.executeOnListen,
-      required this.state})
+      required this.executeOnListen})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         vars, r'GHeroWithFragmentsReq', 'vars');
@@ -337,8 +326,6 @@ class _$GHeroWithFragmentsReq extends GHeroWithFragmentsReq {
         operation, r'GHeroWithFragmentsReq', 'operation');
     BuiltValueNullFieldError.checkNotNull(
         executeOnListen, r'GHeroWithFragmentsReq', 'executeOnListen');
-    BuiltValueNullFieldError.checkNotNull(
-        state, r'GHeroWithFragmentsReq', 'state');
   }
 
   @override
@@ -363,8 +350,7 @@ class _$GHeroWithFragmentsReq extends GHeroWithFragmentsReq {
         updateCacheHandlerKey == other.updateCacheHandlerKey &&
         updateCacheHandlerContext == other.updateCacheHandlerContext &&
         fetchPolicy == other.fetchPolicy &&
-        executeOnListen == other.executeOnListen &&
-        state == other.state;
+        executeOnListen == other.executeOnListen;
   }
 
   @override
@@ -379,7 +365,6 @@ class _$GHeroWithFragmentsReq extends GHeroWithFragmentsReq {
     _$hash = $jc(_$hash, updateCacheHandlerContext.hashCode);
     _$hash = $jc(_$hash, fetchPolicy.hashCode);
     _$hash = $jc(_$hash, executeOnListen.hashCode);
-    _$hash = $jc(_$hash, state.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -395,8 +380,7 @@ class _$GHeroWithFragmentsReq extends GHeroWithFragmentsReq {
           ..add('updateCacheHandlerKey', updateCacheHandlerKey)
           ..add('updateCacheHandlerContext', updateCacheHandlerContext)
           ..add('fetchPolicy', fetchPolicy)
-          ..add('executeOnListen', executeOnListen)
-          ..add('state', state))
+          ..add('executeOnListen', executeOnListen))
         .toString();
   }
 }
@@ -458,10 +442,6 @@ class GHeroWithFragmentsReqBuilder
   set executeOnListen(bool? executeOnListen) =>
       _$this._executeOnListen = executeOnListen;
 
-  _i1.RequestState? _state;
-  _i1.RequestState? get state => _$this._state;
-  set state(_i1.RequestState? state) => _$this._state = state;
-
   GHeroWithFragmentsReqBuilder() {
     GHeroWithFragmentsReq._initializeBuilder(this);
   }
@@ -478,7 +458,6 @@ class GHeroWithFragmentsReqBuilder
       _updateCacheHandlerContext = $v.updateCacheHandlerContext;
       _fetchPolicy = $v.fetchPolicy;
       _executeOnListen = $v.executeOnListen;
-      _state = $v.state;
       _$v = null;
     }
     return this;
@@ -513,9 +492,9 @@ class GHeroWithFragmentsReqBuilder
               updateCacheHandlerContext: updateCacheHandlerContext,
               fetchPolicy: fetchPolicy,
               executeOnListen: BuiltValueNullFieldError.checkNotNull(
-                  executeOnListen, r'GHeroWithFragmentsReq', 'executeOnListen'),
-              state: BuiltValueNullFieldError.checkNotNull(
-                  state, r'GHeroWithFragmentsReq', 'state'));
+                  executeOnListen,
+                  r'GHeroWithFragmentsReq',
+                  'executeOnListen'));
     } catch (_) {
       late String _$failedField;
       try {

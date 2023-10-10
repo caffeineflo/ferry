@@ -29,9 +29,6 @@ class _$GGetAuthorByIdReqSerializer
       'executeOnListen',
       serializers.serialize(object.executeOnListen,
           specifiedType: const FullType(bool)),
-      'state',
-      serializers.serialize(object.state,
-          specifiedType: const FullType(_i1.RequestState)),
     ];
     Object? value;
     value = object.requestId;
@@ -123,11 +120,6 @@ class _$GGetAuthorByIdReqSerializer
           result.executeOnListen = serializers.deserialize(value,
               specifiedType: const FullType(bool))! as bool;
           break;
-        case 'state':
-          result.state = serializers.deserialize(value,
-                  specifiedType: const FullType(_i1.RequestState))!
-              as _i1.RequestState;
-          break;
       }
     }
 
@@ -155,8 +147,6 @@ class _$GGetAuthorByIdReq extends GGetAuthorByIdReq {
   final _i1.FetchPolicy? fetchPolicy;
   @override
   final bool executeOnListen;
-  @override
-  final _i1.RequestState state;
 
   factory _$GGetAuthorByIdReq(
           [void Function(GGetAuthorByIdReqBuilder)? updates]) =>
@@ -171,15 +161,13 @@ class _$GGetAuthorByIdReq extends GGetAuthorByIdReq {
       this.updateCacheHandlerKey,
       this.updateCacheHandlerContext,
       this.fetchPolicy,
-      required this.executeOnListen,
-      required this.state})
+      required this.executeOnListen})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(vars, r'GGetAuthorByIdReq', 'vars');
     BuiltValueNullFieldError.checkNotNull(
         operation, r'GGetAuthorByIdReq', 'operation');
     BuiltValueNullFieldError.checkNotNull(
         executeOnListen, r'GGetAuthorByIdReq', 'executeOnListen');
-    BuiltValueNullFieldError.checkNotNull(state, r'GGetAuthorByIdReq', 'state');
   }
 
   @override
@@ -203,8 +191,7 @@ class _$GGetAuthorByIdReq extends GGetAuthorByIdReq {
         updateCacheHandlerKey == other.updateCacheHandlerKey &&
         updateCacheHandlerContext == other.updateCacheHandlerContext &&
         fetchPolicy == other.fetchPolicy &&
-        executeOnListen == other.executeOnListen &&
-        state == other.state;
+        executeOnListen == other.executeOnListen;
   }
 
   @override
@@ -219,7 +206,6 @@ class _$GGetAuthorByIdReq extends GGetAuthorByIdReq {
     _$hash = $jc(_$hash, updateCacheHandlerContext.hashCode);
     _$hash = $jc(_$hash, fetchPolicy.hashCode);
     _$hash = $jc(_$hash, executeOnListen.hashCode);
-    _$hash = $jc(_$hash, state.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -235,8 +221,7 @@ class _$GGetAuthorByIdReq extends GGetAuthorByIdReq {
           ..add('updateCacheHandlerKey', updateCacheHandlerKey)
           ..add('updateCacheHandlerContext', updateCacheHandlerContext)
           ..add('fetchPolicy', fetchPolicy)
-          ..add('executeOnListen', executeOnListen)
-          ..add('state', state))
+          ..add('executeOnListen', executeOnListen))
         .toString();
   }
 }
@@ -297,10 +282,6 @@ class GGetAuthorByIdReqBuilder
   set executeOnListen(bool? executeOnListen) =>
       _$this._executeOnListen = executeOnListen;
 
-  _i1.RequestState? _state;
-  _i1.RequestState? get state => _$this._state;
-  set state(_i1.RequestState? state) => _$this._state = state;
-
   GGetAuthorByIdReqBuilder() {
     GGetAuthorByIdReq._initializeBuilder(this);
   }
@@ -317,7 +298,6 @@ class GGetAuthorByIdReqBuilder
       _updateCacheHandlerContext = $v.updateCacheHandlerContext;
       _fetchPolicy = $v.fetchPolicy;
       _executeOnListen = $v.executeOnListen;
-      _state = $v.state;
       _$v = null;
     }
     return this;
@@ -352,9 +332,7 @@ class GGetAuthorByIdReqBuilder
               updateCacheHandlerContext: updateCacheHandlerContext,
               fetchPolicy: fetchPolicy,
               executeOnListen: BuiltValueNullFieldError.checkNotNull(
-                  executeOnListen, r'GGetAuthorByIdReq', 'executeOnListen'),
-              state: BuiltValueNullFieldError.checkNotNull(
-                  state, r'GGetAuthorByIdReq', 'state'));
+                  executeOnListen, r'GGetAuthorByIdReq', 'executeOnListen'));
     } catch (_) {
       late String _$failedField;
       try {

@@ -31,8 +31,7 @@ abstract class GHeroNoVarsReq
       document: _i5.document,
       operationName: 'HeroNoVars',
     )
-    ..executeOnListen = true
-    ..state = _i1.RequestState.Idle;
+    ..executeOnListen = true;
 
   @override
   _i3.GHeroNoVarsVars get vars;
@@ -62,8 +61,6 @@ abstract class GHeroNoVarsReq
   _i1.FetchPolicy? get fetchPolicy;
   @override
   bool get executeOnListen;
-  @override
-  _i1.RequestState get state;
   @override
   _i2.GHeroNoVarsData? parseData(Map<String, dynamic> json) =>
       _i2.GHeroNoVarsData.fromJson(json);
